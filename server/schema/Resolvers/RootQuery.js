@@ -1,5 +1,4 @@
-import UserType from '../TypeDefs/UserType.js';
-import ProjectType from '../TypeDefs/ProjectType.js';
+import { UserType, ProjectType } from '../TypeDefs/typeDefs.js';
 import { users, projects } from '../../sampleData.js';
 import { GraphQLObjectType, GraphQLID, GraphQLList } from 'graphql';
 
