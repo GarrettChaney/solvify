@@ -2,6 +2,10 @@ import { UserType, ProjectType } from '../TypeDefs/typeDefs.js';
 import { users, projects } from '../../sampleData.js';
 import { GraphQLObjectType, GraphQLID, GraphQLList } from 'graphql';
 
+//import mongoose schemas
+import User from '../../models/User.js';
+import Project from '../../models/Project.js';
+
 // This is the home of all our query operations. We can query a single user by id or query all users.
 const RootQuery = new GraphQLObjectType({
 	name: 'RootQueryType',
@@ -12,7 +16,7 @@ const RootQuery = new GraphQLObjectType({
 			args: { id: { type: GraphQLID } },
 			resolve(parent, args) {
 				// code to get data from db / other source
-				return users.find((user) => user.id === args.id);
+				return User.findById(args.id);
 			},
 		},
 		// Query all users in the database and return them as a list of users.
@@ -20,7 +24,7 @@ const RootQuery = new GraphQLObjectType({
 			type: new GraphQLList(UserType),
 			resolve(parent, args) {
 				// code to get data from db / other source
-				return users;
+				return User.find();
 			},
 		},
 		// Query a single project by id and return the project.
@@ -29,7 +33,7 @@ const RootQuery = new GraphQLObjectType({
 			args: { id: { type: GraphQLID } },
 			resolve(parent, args) {
 				// code to get data from db / other source
-				return projects.find((project) => project.id === args.id);
+				return Project.findById(args.id);
 			},
 		},
 		// Query all projects in the database and return them as a list of projects.
@@ -38,7 +42,7 @@ const RootQuery = new GraphQLObjectType({
 			args: { id: { type: GraphQLID } },
 			resolve(parent, args) {
 				// code to get data from db / other source
-				return projects;
+				return Project.find();
 			},
 		},
 	},
