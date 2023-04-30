@@ -5,6 +5,7 @@ import {
 	GraphQLID,
 } from 'graphql';
 import { users } from '../../sampleData.js';
+import { User, Project } from '../../models/index.js';
 
 // This is the type definition for the User type.
 const UserType = new GraphQLObjectType({
@@ -29,7 +30,7 @@ const ProjectType = new GraphQLObjectType({
 			type: UserType,
 			resolve(parent, args) {
 				// code to get data from db / other source
-				return users.find((user) => user.id === parent.managerId);
+				return User.findById(parent.userId);
 			},
 		},
 	}),
