@@ -10,7 +10,6 @@ const ProjectSchema = new mongoose.Schema({
 	description: {
 		type: String,
 		trim: true,
-		required: 'Description is required',
 	},
 	status: {
 		type: String,
@@ -24,4 +23,4 @@ const ProjectSchema = new mongoose.Schema({
 	},
 });
 
-export { ProjectSchema };
+export default mongoose.model('Project', ProjectSchema);

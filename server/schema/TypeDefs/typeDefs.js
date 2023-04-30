@@ -11,9 +11,9 @@ const UserType = new GraphQLObjectType({
 	name: 'User',
 	fields: () => ({
 		id: { type: GraphQLNonNull(GraphQLID) },
-		name: { type: GraphQLNonNull(GraphQLString) },
-		email: { type: GraphQLNonNull(GraphQLString) },
-		phone: { type: GraphQLNonNull(GraphQLString) },
+		name: { type: GraphQLString },
+		email: { type: GraphQLString },
+		phone: { type: GraphQLString },
 	}),
 });
 
@@ -21,10 +21,10 @@ const UserType = new GraphQLObjectType({
 const ProjectType = new GraphQLObjectType({
 	name: 'Project',
 	fields: () => ({
-		id: { type: GraphQLNonNull(GraphQLID) },
-		name: { type: GraphQLNonNull(GraphQLString) },
-		description: { type: GraphQLNonNull(GraphQLString) },
-		status: { type: GraphQLNonNull(GraphQLString) },
+		id: { type: GraphQLID },
+		name: { type: GraphQLString },
+		description: { type: GraphQLString },
+		status: { type: GraphQLString },
 		// This is the foreign key that links the project to the user who is the manager of the project.
 		manager: {
 			type: UserType,
