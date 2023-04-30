@@ -1,11 +1,16 @@
 import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
-import { config } from 'dotenv';
 import schema from './schema/index.js';
+import connectDB from './config/db.js';
+import colors from 'colors';
+import dotenv from 'dotenv';
+dotenv.config();
 
-config();
 const port = process.env.PORT || 5000;
 const app = express();
+
+// Connect to MongoDB
+connectDB();
 
 app.use(
 	'/graphql',
@@ -15,4 +20,7 @@ app.use(
 	})
 );
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(port, () =>
+	console.log(`Server running on port ${port}`.green.underline.bold)
+);
+``;

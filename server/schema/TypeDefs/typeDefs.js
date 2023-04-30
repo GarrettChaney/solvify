@@ -6,6 +6,7 @@ import {
 } from 'graphql';
 import { users } from '../../sampleData.js';
 
+// This is the type definition for the User type.
 const UserType = new GraphQLObjectType({
 	name: 'User',
 	fields: () => ({
@@ -15,6 +16,7 @@ const UserType = new GraphQLObjectType({
 	}),
 });
 
+// This is the type definition for the Project type.
 const ProjectType = new GraphQLObjectType({
 	name: 'Project',
 	fields: () => ({
