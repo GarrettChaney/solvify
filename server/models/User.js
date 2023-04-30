@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-// Define the User model
+// Define the User model with mongoose.
 const UserSchema = new mongoose.Schema({
 	name: {
 		type: String,
@@ -14,6 +14,11 @@ const UserSchema = new mongoose.Schema({
 		match: [/.+\@.+\..+/, 'Please fill a valid email address'],
 		required: 'Email is required',
 	},
+	phone: {
+		type: String,
+		trim: true,
+		required: 'Phone number is required',
+	},
 });
 
-export default UserSchema;
+export default mongoose.model('User', UserSchema);

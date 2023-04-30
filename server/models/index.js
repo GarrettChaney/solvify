@@ -1,4 +1,4 @@
-import UserSchema from './User';
-import ProjectSchema from './Project';
+import User from './User.js';
+import { ProjectSchema as Project } from './Project.js';
 
-export { UserSchema, ProjectSchema };
+export { User, Project };
