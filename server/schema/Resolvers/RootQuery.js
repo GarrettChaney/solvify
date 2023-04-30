@@ -1,10 +1,6 @@
 import { UserType, ProjectType } from '../TypeDefs/typeDefs.js';
-import { users, projects } from '../../sampleData.js';
+import { User, Project } from '../../models/index.js';
 import { GraphQLObjectType, GraphQLID, GraphQLList } from 'graphql';
-
-//import mongoose schemas
-import User from '../../models/User.js';
-import Project from '../../models/Project.js';
 
 // This is the home of all our query operations. We can query a single user by id or query all users.
 const RootQuery = new GraphQLObjectType({

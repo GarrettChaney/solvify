@@ -24,4 +24,4 @@ const ProjectSchema = new mongoose.Schema({
 	},
 });
 
-export default ProjectSchema;
+export { ProjectSchema };

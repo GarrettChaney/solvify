@@ -1,11 +1,10 @@
+import { User, Project } from '../../models/index.js';
 import {
 	GraphQLObjectType,
 	GraphQLNonNull,
 	GraphQLString,
 	GraphQLID,
 } from 'graphql';
-import { users } from '../../sampleData.js';
-import { User, Project } from '../../models/index.js';
 
 // This is the type definition for the User type.
 const UserType = new GraphQLObjectType({
@@ -14,6 +13,7 @@ const UserType = new GraphQLObjectType({
 		id: { type: GraphQLNonNull(GraphQLID) },
 		name: { type: GraphQLNonNull(GraphQLString) },
 		email: { type: GraphQLNonNull(GraphQLString) },
+		phone: { type: GraphQLNonNull(GraphQLString) },
 	}),
 });
 
