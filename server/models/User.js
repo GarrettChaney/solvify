@@ -19,6 +19,18 @@ const UserSchema = new mongoose.Schema({
 		trim: true,
 		required: 'Phone number is required',
 	},
+	role: {
+		type: String,
+		enum: [
+			'Admin',
+			'Business Admin',
+			'Unit Admin',
+			'System Admin',
+			'Submitter',
+			'User',
+		],
+		default: 'User',
+	},
 });
 
 export default mongoose.model('User', UserSchema);
