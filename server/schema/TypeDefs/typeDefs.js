@@ -1,4 +1,4 @@
-import { User, Project } from '../../models/index.js';
+import { User } from '../../models/index.js';
 import {
 	GraphQLObjectType,
 	GraphQLNonNull,
