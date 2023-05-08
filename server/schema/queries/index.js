@@ -5,11 +5,7 @@ import userQueries from './userQueries.js';
 const RootQuery = new GraphQLObjectType({
 	name: 'RootQueryType',
 	fields: {
-		//businessQueries,
-		//unitQueries,
-		//systemQueries,
-		//ticketQueries,
-		userQueries,
+		...userQueries,
 	},
 });
 

@@ -5,11 +5,7 @@ import userMutations from './userMutations.js';
 const RootMutation = new GraphQLObjectType({
 	name: 'RootMutationType',
 	fields: {
-		//businessMutations,
-		//unitMutations,
-		//systemMutations,
-		//ticketMutations,
-		userMutations,
+		...userMutations,
 	},
 });
 
