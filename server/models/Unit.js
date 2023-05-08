@@ -8,6 +8,10 @@ const UnitSchema = new mongoose.Schema({
 		// unique: 'Name already exists',
 		// required: 'Name is required',
 	},
+	description: {
+		type: String,
+		trim: true,
+	},
 	unitLead: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',

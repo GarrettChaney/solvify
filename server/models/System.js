@@ -20,6 +20,18 @@ const SystemSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Unit',
 	},
+	tickets: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Ticket',
+		},
+	],
+	users: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'User',
+		},
+	],
 });
 
 export default mongoose.model('System', SystemSchema);

@@ -31,6 +31,26 @@ const UserSchema = new mongoose.Schema({
 		],
 		default: 'User',
 	},
+	business: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Business',
+	},
+	businessUnit: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Unit',
+	},
+	systems: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'System',
+		},
+	],
+	tickets: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Ticket',
+		},
+	],
 });
 
 export default mongoose.model('User', UserSchema);
