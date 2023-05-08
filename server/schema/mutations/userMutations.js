@@ -1,6 +1,6 @@
-import { GraphQLString, GraphQLNonNull } from 'graphql';
+import { GraphQLObjectType, GraphQLNonNull, GraphQLString } from 'graphql';
 import { User } from '../../models/index.js';
-import UserType from '../typeDefs.js';
+import { UserType } from '../typeDefs.js';
 
 //  This is the variable where all our user mutations are stored.
 const userMutations = {
@@ -17,8 +17,32 @@ const userMutations = {
 				name: args.name,
 				email: args.email,
 				phone: args.phone,
+				role: 'User',
 			});
 			return user.save();
+		},
+	},
+	//! Update a user by their ID.
+	updateUser: {
+		type: UserType,
+		args: {
+			id: { type: GraphQLNonNull(GraphQLString) },
+			name: { type: GraphQLNonNull(GraphQLString) },
+			email: { type: GraphQLNonNull(GraphQLString) },
+			phone: { type: GraphQLNonNull(GraphQLString) },
+			role: { type: GraphQLNonNull(GraphQLString) },
+			businessName: { type: GraphQLNonNull(GraphQLString) },
+		},
+		resolve(parent, args) {
+			return User.findByIdAndUpdate(
+				args.id,
+				{
+					name: args.name,
+					email: args.email,
+					phone: args.phone,
+				},
+				{ new: true }
+			);
 		},
 	},
 	//! Delete a user by their ID.
@@ -28,7 +52,7 @@ const userMutations = {
 			id: { type: GraphQLNonNull(GraphQLString) },
 		},
 		resolve(parent, args) {
-			return User.findByIdAndRemove(args.id);
+			return User.findByIdAndDelete(args.id);
 		},
 	},
 };
