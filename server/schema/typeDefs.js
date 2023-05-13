@@ -1,4 +1,10 @@
-import { GraphQLObjectType, GraphQLString, GraphQLID } from 'graphql';
+import {
+	GraphQLObjectType,
+	GraphQLString,
+	GraphQLID,
+	GraphQLList,
+} from 'graphql';
+import { User, Ticket } from '../models/index.js';
 
 // This is the type definition for the Business type.
 const BusinessType = new GraphQLObjectType({
@@ -51,31 +57,47 @@ const SystemType = new GraphQLObjectType({
 // This is the type definition for the Ticket type.
 const TicketType = new GraphQLObjectType({
 	name: 'Ticket',
-	description: 'A ticket that is used to track issues with a system.',
 	fields: () => ({
 		id: { type: GraphQLID },
-		name: { type: GraphQLString },
+		title: { type: GraphQLString },
 		description: { type: GraphQLString },
-		createdBy: { type: GraphQLString },
-		assignedTo: { type: GraphQLString },
-		system: { type: GraphQLString },
+		status: { type: GraphQLString },
+		createdBy: {
+			type: UserType,
+			resolve: async (parent) => {
+				try {
+					const ticket = await Ticket.findById(parent._id).populate(
+						'createdBy'
+					);
+					return ticket.createdBy;
+				} catch (err) {
+					throw new Error(err);
+				}
+			},
+		},
 	}),
 });
 
 // This is the type definition for the User type.
 const UserType = new GraphQLObjectType({
 	name: 'User',
-	description: 'A user within the application.',
 	fields: () => ({
 		id: { type: GraphQLID },
 		name: { type: GraphQLString },
 		email: { type: GraphQLString },
 		phone: { type: GraphQLString },
 		role: { type: GraphQLString },
-		business: { type: GraphQLString },
-		businessUnit: { type: GraphQLString },
-		systems: { type: GraphQLString },
-		tickets: { type: GraphQLString },
+		tickets: {
+			type: new GraphQLList(TicketType),
+			resolve: async (parent) => {
+				try {
+					const user = await User.findById(parent.id).populate('tickets');
+					return user.tickets;
+				} catch (err) {
+					throw new Error(err);
+				}
+			},
+		},
 	}),
 });
 

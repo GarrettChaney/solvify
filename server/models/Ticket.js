@@ -11,38 +11,38 @@ const TicketSchema = new mongoose.Schema({
 	description: {
 		type: String,
 		trim: true,
-		// required: 'description is required',
+		required: 'description is required',
 	},
 	status: {
 		type: String,
 		trim: true,
 		// required: 'status is required',
 	},
-	priority: {
-		type: String,
-		trim: true,
-	},
-	business: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Business',
-	},
-	businessUnit: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Unit',
-	},
-	developer: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User',
-	},
-	system: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'System',
-	},
-	specialist: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User',
-	},
-	submitter: {
+	// priority: {
+	// 	type: String,
+	// 	trim: true,
+	// },
+	// business: {
+	// 	type: mongoose.Schema.Types.ObjectId,
+	// 	ref: 'Business',
+	// },
+	// businessUnit: {
+	// 	type: mongoose.Schema.Types.ObjectId,
+	// 	ref: 'Unit',
+	// },
+	// developer: {
+	// 	type: mongoose.Schema.Types.ObjectId,
+	// 	ref: 'User',
+	// },
+	// system: {
+	// 	type: mongoose.Schema.Types.ObjectId,
+	// 	ref: 'System',
+	// },
+	// specialist: {
+	// 	type: mongoose.Schema.Types.ObjectId,
+	// 	ref: 'User',
+	// },
+	createdBy: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',
 	},
