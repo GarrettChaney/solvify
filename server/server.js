@@ -3,6 +3,7 @@ import cors from 'cors';
 import { graphqlHTTP } from 'express-graphql';
 import schema from './schema/index.js';
 import connectDB from './config/db.js';
+import path from 'path';
 import colors from 'colors';
 import dotenv from 'dotenv';
 dotenv.config();
