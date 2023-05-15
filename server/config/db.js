@@ -4,7 +4,12 @@ const connectDB = async () => {
 	try {
 		const conn = await mongoose.connect(
 			mongoose.connect(
-				process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/solvify'
+				process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/solvify',
+				{
+					useNewUrlParser: true,
+					useUnifiedTopology: true,
+					useCreateIndex: true,
+				}
 			)
 		);
 
