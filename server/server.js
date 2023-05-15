@@ -4,8 +4,6 @@ import { graphqlHTTP } from 'express-graphql';
 import schema from './schema/index.js';
 import connectDB from './config/db.js';
 import colors from 'colors';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const port = process.env.PORT || 5000;
 const app = express();
