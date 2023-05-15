@@ -3,7 +3,8 @@ import cors from 'cors';
 import { graphqlHTTP } from 'express-graphql';
 import schema from './schema/index.js';
 import connectDB from './config/db.js';
-import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 import colors from 'colors';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -15,6 +16,17 @@ const app = express();
 connectDB();
 
 app.use(cors());
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static(join(__dirname, '../client/build')));
+}
+
+app.get('/', (req, res) => {
+	res.sendFile(join(__dirname, '../client/build/index.html'));
+});
 
 app.use(
 	'/graphql',
