@@ -4,7 +4,7 @@ import Tickets from './components/Tickets';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
-	uri: 'http://localhost:5000/graphql',
+	uri: '/graphql',
 	cache: new InMemoryCache(),
 });
 
