@@ -1,14 +1,18 @@
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { createHttpLink } from '@apollo/client';
 import Header from './components/Header';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
 const defaultURI = 'http://localhost:5000/graphql';
+const uri = process.env.GRAPHQL_URI || defaultURI;
+
+const httpLink = createHttpLink({ uri });
 
 const client = new ApolloClient({
-	uri: process.env.GRAPHQL_URI || 'http://localhost:5000/graphql',
+	link: httpLink,
 	cache: new InMemoryCache(),
 });
 
