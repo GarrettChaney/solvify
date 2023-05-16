@@ -10,7 +10,7 @@ const uri =
 	process.env.NODE_ENV === 'production' ? process.env.GRAPHQL_URI : defaultURI;
 
 const client = new ApolloClient({
-	uri,
+	uri: '/graphql',
 	cache: new InMemoryCache(),
 });
 
