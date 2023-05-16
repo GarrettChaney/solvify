@@ -6,11 +6,10 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
 const defaultURI = 'http://localhost:5000/graphql';
-const uri =
-	process.env.NODE_ENV === 'production' ? process.env.GRAPHQL_URI : defaultURI;
+const uri = process.env.GRAPHQL_URI || defaultURI;
 
 const client = new ApolloClient({
-	uri: '/graphql',
+	uri,
 	cache: new InMemoryCache(),
 });
 
